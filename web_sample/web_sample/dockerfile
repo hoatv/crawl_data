@@ -1,0 +1,11 @@
+FROM python:alpine3.6
+
+
+# install requirements
+COPY web_sample/requirements.txt /
+RUN pip3 install -r /requirements.txt
+
+# add code
+COPY web_sample/web_sample /code
+
+ENTRYPOINT  cd /code && python3 server.py
